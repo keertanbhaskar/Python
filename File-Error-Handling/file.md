@@ -13,3 +13,10 @@
 - read( )
 - write( )
 
+## modes
+- "r" - Default value. Opens a file for reading
+- "a" - Append - Opens a file for appending, 
+- "w" - write
+- "x" - create -Creates the specified file
+- "t" - Text -Default value,Text mode
+- "b" - binary mode

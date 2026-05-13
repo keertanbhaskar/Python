@@ -1,0 +1,4 @@
+hello world
+Reads entire file
+Reads all lines into a list.
+hey, good morning
