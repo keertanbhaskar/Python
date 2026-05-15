@@ -40,7 +40,7 @@ file.close()
 file = open("textFile.txt","r")
 line = file.readlines()
 print(line)
-file.close()
+file.close() 
 '''
 # another way to read lines
 
