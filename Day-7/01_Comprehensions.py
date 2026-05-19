@@ -1,10 +1,18 @@
 labels = [f'Apple #{i}' for i in range(1,6)]
 print(labels)
 
+# manually using loops
+# numbers = [1, 2, 3, 4, 5]
+# squares = []
+# for n in numbers:
+#     squares.append(n * n)
+# print(squares)
 # square numbers
+
 numbers = [1,2,3,4]
 square = [i**2 for i in numbers]
 print(square)
+
 
 # filtering even numbers
 nums = [1,2,7,4,9,8]
