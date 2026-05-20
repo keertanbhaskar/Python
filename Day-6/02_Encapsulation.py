@@ -18,6 +18,7 @@ acc.deposit(500)
 acc.show_balance()
 
 # print(acc._BankAccount__balance) => dont use
+
 # protected => accessible within cls and its subcls
 class Employee:
   def __init__(self,name,age):

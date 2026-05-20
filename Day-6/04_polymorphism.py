@@ -31,6 +31,8 @@ d.sound()
 
 # method overriding(compile time)
 # Same method name with different arguments.
+
+# method overloading
 class Calculator:
 
     def add(self, a, b=0, c=0,*args):

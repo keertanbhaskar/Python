@@ -17,6 +17,7 @@ d.sound()
 class Animal1:
   def __init__(self,name):
     self.name = name
+
   def info(self):
     print("Animal name:",self.name)
 
@@ -98,7 +99,7 @@ class Son1(Father1):
         print('Son name :', self.sonname)
 
 # Driver code
-s1 = Son1('Prince', 'Rampal', 'Lal mani')
+s1 = Son1('Prince', 'Ram', 'sham')
 print(s1.grandfathername)
 s1.print_name()
 

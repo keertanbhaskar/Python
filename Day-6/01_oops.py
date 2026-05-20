@@ -57,3 +57,5 @@ s2 = Student("Sam")
 
 print(s1.school)
 print(s2.school)
+
+print(s1.name)
