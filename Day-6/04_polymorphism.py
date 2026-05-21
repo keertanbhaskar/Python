@@ -15,6 +15,12 @@ c = Cat()
 d.sound()
 c.sound()
 
+
+
+
+
+
+
 # method overriding (compile-time polymorphism)
 
 class Animal:
@@ -25,13 +31,11 @@ class Dog(Animal):
     def sound(self):
         print("Dog barks")
 
-
 d = Dog()
 d.sound()
 
-# method overriding(compile time)
-# Same method name with different arguments.
 
+# Same method name with different arguments.
 # method overloading
 class Calculator:
 

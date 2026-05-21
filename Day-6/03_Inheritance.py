@@ -130,5 +130,3 @@ object1.func2()
 object2.func1()
 object2.func3()
 
-
-

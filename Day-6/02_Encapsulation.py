@@ -2,6 +2,7 @@
 # restricting direct access to data
 # access specifier => public, protected, private
 
+
 # example => private
 class BankAccount:
   def __init__(self,balance):
