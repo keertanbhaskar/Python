@@ -143,7 +143,7 @@ fruit=rng.choice(fruits) #choice(fruits,size=(2,3))
 print(fruit)
 
 
-
+# array creation
 print(np.zeros((2,3)),"\n")
 print(np.ones((2,2)),"\n")
 print(np.eye(3),"\n")
