@@ -15,11 +15,13 @@ df = pd.read_csv('train_u6lujuX_CVtuZ9i.csv')
 print(df.head(5))
 print(df.info())
 
-le = LabelEncoder()
+le_gn = LabelEncoder()
+le_ed = LabelEncoder()
+le_lnSt = LabelEncoder()
 
-df['Gender'] = le.fit_transform(df['Gender'])
-df['Education'] = le.fit_transform(df['Education'])
-df['Loan_Status'] = le.fit_transform(df['Loan_Status'])
+df['Gender'] = le_gn.fit_transform(df['Gender'])
+df['Education'] = le_ed.fit_transform(df['Education'])
+df['Loan_Status'] = le_lnSt.fit_transform(df['Loan_Status'])
 
 
 X = df[['Gender', 'Education', 'ApplicantIncome', 'LoanAmount']]
@@ -38,6 +40,18 @@ dt_pred = dt.predict(X_test)
 rf = RandomForestClassifier()
 rf.fit(X_train,y_train)
 rf_pred = rf.predict(X_test)
+
+
+# testing
+new_data = pd.read_csv('test_Y3wMUE5_7gLdaTN.csv')
+new_data['Gender'] = le_gn.fit_transform(new_data['Gender'])
+new_data['Education'] = le_gn.fit_transform(new_data['Education'])
+
+X_new = new_data[['Gender','Education','ApplicantIncome', 'LoanAmount']]
+prediction = dt.predict(X_new)
+result = le_lnSt.inverse_transform(prediction)
+print("New Prediction of decision tree:",result[0])
+
 
 # accuracy
 print("Decision Tree Acc:",accuracy_score(y_test,dt_pred))
