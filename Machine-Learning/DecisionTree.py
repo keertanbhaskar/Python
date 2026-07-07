@@ -1,4 +1,5 @@
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn import tree
 import matplotlib.pyplot as plt
@@ -20,3 +21,7 @@ print(model.predict([[40,60]]))
 plt.figure(figsize=(10,6))
 tree.plot_tree(model,filled=True)
 plt.show()
+
+rd = RandomForestClassifier()
+rd.fit(X_train,y_train)
+print(model.predict([[40,60]]))
