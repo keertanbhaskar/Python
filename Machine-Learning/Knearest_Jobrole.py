@@ -22,8 +22,13 @@ skills = ["HTML_CSS", "JavaScript", "Python", "ML", "Linux", "Docker", "Creativi
 ratings = []
 
 for skill in skills:
-    rating = int(input(f"Rate {skill} (1-5): "))
-    ratings.append(rating)
+    while True:
+        rating = int(input(f"Rate {skill} (1-5): "))
+        if 1 <= rating <= 5:
+            ratings.append(rating)
+            break
+        else:
+            print("Invalid rating! Please enter a value between 1 and 5.")
 
 new_candidate = pd.DataFrame([ratings], columns=skills)
 
