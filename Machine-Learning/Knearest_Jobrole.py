@@ -16,7 +16,18 @@ y = le.fit_transform(y)
 model = KNeighborsClassifier()
 model.fit(X,y)
 
-new_candidate = pd.DataFrame([[5,5,2,1,2,1,3]],columns=X.columns)
+
+skills = ["HTML_CSS", "JavaScript", "Python", "ML", "Linux", "Docker", "Creativity"]
+
+ratings = []
+
+for skill in skills:
+    rating = int(input(f"Rate {skill} (1-5): "))
+    ratings.append(rating)
+
+new_candidate = pd.DataFrame([ratings], columns=skills)
+
+
 prediction = model.predict(new_candidate)
 print(le.inverse_transform(prediction))
 
