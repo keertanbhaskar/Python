@@ -14,7 +14,7 @@ model = DecisionTreeClassifier()
 model.fit(X_train,y_train)
 
 # Predict
-print(model.predict([[40,60]]))
+print(model.predict([[80,20]]))
 
 
 # visualizing the tree
