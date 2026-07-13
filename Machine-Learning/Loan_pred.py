@@ -11,18 +11,18 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-# ----------- Load Training Data -----------------
+
 df = pd.read_csv("train_u6lujuX_CVtuZ9i.csv")
 
 print(df.head())
 print(df.info())
 print(df.shape)
 
-print("Missing Values Before Handling:")
+
 print(df.isnull().sum())
 
 
-# Handle Missing Values
+
 df["Gender"] = df["Gender"].fillna(df["Gender"].mode()[0])
 df["Education"] = df["Education"].fillna(df["Education"].mode()[0])
 df["Loan_Status"] = df["Loan_Status"].fillna(df["Loan_Status"].mode()[0])
@@ -30,7 +30,7 @@ df["Loan_Status"] = df["Loan_Status"].fillna(df["Loan_Status"].mode()[0])
 df["ApplicantIncome"] = df["ApplicantIncome"].fillna(df["ApplicantIncome"].mean())
 df["LoanAmount"] = df["LoanAmount"].fillna(df["LoanAmount"].mean())
 
-print("Missing Values After Handling:")
+# check the missing value after the data handling
 print(df.isnull().sum())
 
 
@@ -64,42 +64,48 @@ dt.fit(X_train, y_train)
 
 dt_pred = dt.predict(X_test)
 
+
+
+
+
+
 # Random Forest Model
-rf = RandomForestClassifier(random_state=42)
+rf = RandomForestClassifier(n_estimators=100)
 rf.fit(X_train, y_train)
 
 rf_pred = rf.predict(X_test)
 
+
+
 # Accuracy
-print("\nDecision Tree Accuracy :", accuracy_score(y_test, dt_pred))
-print("Random Forest Accuracy :", accuracy_score(y_test, rf_pred))
+print("Decision Tree Acc:", accuracy_score(y_test, dt_pred))
+print("Random Forest Acc:", accuracy_score(y_test, rf_pred))
 
-# Load Test Dataset
-new_data = pd.read_csv("test_Y3wMUE5_7gLdaTN.csv")
+#  Test Dataset
+test_data = pd.read_csv("test_Y3wMUE5_7gLdaTN.csv")
 
-print("\nMissing Values in Test Data:")
-print(new_data.isnull().sum())
+print("Missing Values in  Data:")
+print(test_data.isnull().sum())
 
-# Handle Missing Values
-new_data["Gender"] = new_data["Gender"].fillna(new_data["Gender"].mode()[0])
-new_data["Education"] = new_data["Education"].fillna(new_data["Education"].mode()[0])
 
-new_data["ApplicantIncome"] = new_data["ApplicantIncome"].fillna(new_data["ApplicantIncome"].mean())
-new_data["LoanAmount"] = new_data["LoanAmount"].fillna(new_data["LoanAmount"].mean())
+test_data["Gender"] = test_data["Gender"].fillna(test_data["Gender"].mode()[0])
+test_data["Education"] = test_data["Education"].fillna(test_data["Education"].mode()[0])
+test_data["ApplicantIncome"] = test_data["ApplicantIncome"].fillna(test_data["ApplicantIncome"].mean())
+test_data["LoanAmount"] = test_data["LoanAmount"].fillna(test_data["LoanAmount"].mean())
 
-# Encode Test Data
-new_data["Gender"] = le_gn.transform(new_data["Gender"])
-new_data["Education"] = le_ed.transform(new_data["Education"])
+
+test_data["Gender"] = le_gn.transform(test_data["Gender"])
+test_data["Education"] = le_ed.transform(test_data["Education"])
 
 
 # Prediction
-X_new = new_data[["Gender", "Education", "ApplicantIncome", "LoanAmount"]]
+X_new = test_data[["Gender", "Education", "ApplicantIncome", "LoanAmount"]]
 prediction = dt.predict(X_new)
-result = le_ls.inverse_transform(prediction)
+# result = le_ls.inverse_transform(prediction)
 
 print("Decision tree accuracy",accuracy_score(y_test,dt_pred))
 print("Random forest accuracy:",accuracy_score(y_test,rf_pred))
-print("\nPrediction for First Applicant :", result[0])
+print("Prediction for First Applicant :", prediction[0])
 
 
 # Decision Tree graph
@@ -107,10 +113,8 @@ plt.figure(figsize=(15, 8))
 
 plot_tree(
     dt,
-    feature_names=X.columns,
-    class_names=["N", "Y"],
-    filled=True,
-    rounded=True
+    feature_names=["Gender", "Education", "ApplicantIncome", "LoanAmount"],
+    filled=True
 )
 
 plt.title("Decision Tree")
