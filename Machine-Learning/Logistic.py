@@ -1,8 +1,8 @@
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report,precision_score, recall_score, f1_score
-
+from sklearn.metrics import classification_report,precision_score, recall_score, f1_score,confusion_matrix,ConfusionMatrixDisplay
+import matplotlib.pyplot as plt
 
 # Sample data
 messages = [
@@ -58,3 +58,10 @@ print('Precision score:',precision_score(y_test,y_pred))
 print(recall_score(y_test, y_pred))
 f1 = f1_score(y_test, y_pred)
 print(f"f1 score:{f1}")
+
+
+# confusion matrix
+cm = confusion_matrix(y_test,y_pred)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm)
+disp.plot()
+plt.show()
